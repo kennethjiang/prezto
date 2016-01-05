@@ -11,3 +11,16 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+export M2_HOME=$HOME/usr/apache-maven-3.2.3
+export M2=$M2_HOME/bin
+export MAVEN_OPTS="-Xms256m -Xmx512m"
+
+set_terminal_tab_title() {
+  print -Pn "\e]1;$1:q\a"
+}
+
+precmd_functions=($precmd_functions set_terminal_tab_title)
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
